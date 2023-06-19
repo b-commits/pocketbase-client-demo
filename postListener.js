@@ -1,37 +1,45 @@
 import PocketBase from 'pocketbase';
 
-export async function streamPosts(element) {
-  const pb = new PocketBase('http://127.0.0.1:8090');
+const LOCAL_URL = 'http://127.0.0.1:8090';
+
+export const streamPosts = async (element) => {
+  const pb = new PocketBase(LOCAL_URL);
 
   // (Optionally) authenticate
   await pb
     .collection('users')
     .authWithPassword('john@pb.com', 'Superpassword1');
 
-  console.log('Subscribing to collection...');
-  // Subscribe to changes in any posts record
-  pb.collection('posts').subscribe('*', function (e) {
-    console.log(e.record);
-    var tbodyRef = document.getElementById('table');
-
-    // Insert a row at the end of table
-    var newRow = tbodyRef.insertRow();
-
-    // Insert a cell at the end of the row
-    var albumCell = newRow.insertCell();
-    var bandCell = newRow.insertCell();
-    var imageCell = newRow.insertCell();
-
-    // Append a text node to the cell
-    var album = document.createTextNode(e.record.title);
-    var author = document.createTextNode(e.record.author);
-
-    let img = document.createElement('img');
-    img.height = '50px';
-    img.src = `http://127.0.0.1:8090/api/files/${e.record.collectionId}/${e.record.id}/${e.record.image}`;
-
-    albumCell.appendChild(album);
-    bandCell.appendChild(author);
-    imageCell.appendChild(img);
+  // Subscribe to collections: works just like SignalR
+  pb.collection('posts').subscribe('*', (e) => {
+    buildAlbumCard(
+      `${LOCAL_URL}/api/files/${e.record.collectionId}/${e.record.id}/${e.record.image}`,
+      e.record.title
+    );
   });
-}
+};
+
+export const buildAlbumCard = (src, title) => {
+  const cards = document.getElementById('cards');
+
+  const container = document.createElement('div');
+  container.className = 'container';
+
+  cards.appendChild(container);
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.className = 'card-image';
+
+  container.appendChild(img);
+
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  const titleRef = document.createElement('h2');
+  titleRef.innerHTML = title;
+
+  row.appendChild(titleRef);
+
+  container.appendChild(row);
+};

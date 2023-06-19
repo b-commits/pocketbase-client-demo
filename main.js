@@ -12,14 +12,7 @@ document.querySelector('#app').innerHTML = `
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
     <h1>Pocketbase Demo</h1>
-    <table style="margin: auto;">
-      <th>Title</th>
-      <th>Author</th>
-      <th>Cover</th>
-      <tbody id="table">
-
-      </tbody>
-    <table>
+    <div id="cards"/>
   </div>
 `;
 
