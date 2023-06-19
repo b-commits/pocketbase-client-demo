@@ -1,5 +1,6 @@
 import './style.css';
 import javascriptLogo from './javascript.svg';
+import pocketbaseLogo from './pocketbase.svg';
 import viteLogo from '/vite.svg';
 import { streamAlbums } from './albumListener.js';
 
@@ -9,9 +10,12 @@ document.querySelector('#app').innerHTML = `
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+      <img src="${pocketbaseLogo}" class="logo pocketbase" alt="JavaScript logo" />
+    </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <h1>Pocketbase Demo</h1>
+    <h1>PocketBase Demo</h1>
     <div id="cards"/>
   </div>
 `;

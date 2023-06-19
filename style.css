@@ -55,6 +55,9 @@ h1 {
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
+.logo.pocketbase:hover {
+  filter: drop-shadow(0 0 2em #cfccccaa);
+}
 
 .card {
   padding: 2em;
