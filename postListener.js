@@ -20,11 +20,18 @@ export async function streamPosts(element) {
     // Insert a cell at the end of the row
     var albumCell = newRow.insertCell();
     var bandCell = newRow.insertCell();
+    var imageCell = newRow.insertCell();
 
     // Append a text node to the cell
     var album = document.createTextNode(e.record.title);
     var author = document.createTextNode(e.record.author);
+
+    let img = document.createElement('img');
+    img.height = '50px';
+    img.src = `http://127.0.0.1:8090/api/files/${e.record.collectionId}/${e.record.id}/${e.record.image}`;
+
     albumCell.appendChild(album);
     bandCell.appendChild(author);
+    imageCell.appendChild(img);
   });
 }

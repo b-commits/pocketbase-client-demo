@@ -15,11 +15,9 @@ document.querySelector('#app').innerHTML = `
     <table style="margin: auto;">
       <th>Title</th>
       <th>Author</th>
+      <th>Cover</th>
       <tbody id="table">
-        <tr>
-          <td>Hello</td>
-          <td>Hello</td>
-        </tr>
+
       </tbody>
     <table>
   </div>
