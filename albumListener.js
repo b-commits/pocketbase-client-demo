@@ -2,15 +2,15 @@ import PocketBase from 'pocketbase';
 
 const LOCAL_URL = 'http://127.0.0.1:8090';
 
-export const streamPosts = async (element) => {
+export const streamAlbums = async (element) => {
   const pb = new PocketBase(LOCAL_URL);
 
-  // (Optionally) authenticate
+  // Authenticate using a given 'users' collection:
   await pb
     .collection('users')
     .authWithPassword('john@pb.com', 'Superpassword1');
 
-  // Subscribe to collections: works just like SignalR
+  // Subscribe to collections, works just like SignalR:
   pb.collection('posts').subscribe('*', (e) => {
     buildAlbumCard(
       `${LOCAL_URL}/api/files/${e.record.collectionId}/${e.record.id}/${e.record.image}`,

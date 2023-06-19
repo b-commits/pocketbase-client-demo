@@ -1,7 +1,7 @@
 import './style.css';
 import javascriptLogo from './javascript.svg';
 import viteLogo from '/vite.svg';
-import { streamPosts } from './postListener.js';
+import { streamAlbums } from './albumListener.js';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -16,4 +16,4 @@ document.querySelector('#app').innerHTML = `
   </div>
 `;
 
-streamPosts();
+streamAlbums();
