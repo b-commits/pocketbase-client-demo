@@ -1,6 +1,6 @@
-import './style.css';
-import javascriptLogo from './javascript.svg';
-import pocketbaseLogo from './pocketbase.svg';
+import '../css/style.css';
+import javascriptLogo from '/javascript.svg';
+import pocketbaseLogo from '/pocketbase.svg';
 import viteLogo from '/vite.svg';
 import { streamAlbums } from './albumListener.js';
 
